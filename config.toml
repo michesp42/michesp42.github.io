@@ -109,9 +109,9 @@ enableEmoji = true
 	  social = true
 
   [params.social]
-    GitHub = "https://github.com/michesp42"
-    GitLab = "https://gitlab.com/michesp42"
-	Twitter = "https://twitter.com/michesp42"
+    GitHub = "michesp42"
+    GitLab = "michesp42"
+	Twitter = "michesp42"
 	
   [params.math]
     enable = true
