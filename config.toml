@@ -1,0 +1,126 @@
+baseURL = "http://michesp42.github.io/"
+theme = "LoveIt"
+title = "Michael Espeña"
+languageCode = "en"
+languageName = "English"
+enableEmoji = true
+
+[author]
+  name = "Michael"
+  email = "michael.esp42@pm.me"
+  link = "https://github.com/michesp42"
+
+[menu]
+  [[menu.main]]
+    weight = 1
+    identifier = "about"
+    pre = ""
+    post = ""
+    name = "About"
+    url = "/about/"
+    title = ""
+  [[menu.main]]
+    weight = 2
+    identifier = "posts"
+    pre = ""
+    post = ""
+    name = "Posts"
+    url = "/posts/"
+    title = ""
+  [[menu.main]]
+    weight = 3
+    identifier = "tags"
+    pre = ""
+    post = ""
+    name = "Tags"
+    url = "/tags/"
+    title = ""
+  [[menu.main]]
+    weight = 4
+    identifier = "categories"
+    pre = ""
+    post = ""
+    name = "Categories"
+    url = "/categories/"
+    title = ""
+  [[menu.main]]
+    weight = 5
+    identifier = "github"
+    pre = "<i class='fab fa-github fa-fw'></i>"
+    post = ""
+    name = ""
+    url = "https://github.com/michesp42"
+    title = "Github"
+  [[menu.main]]
+    identifier = "gitlab"
+    pre = "<i class='fab fa-gitlab fa-fw'></i>"
+    post = ""
+    name = ""
+    url = "https://gitlab.com/michesp42"
+    title = "gitlab"
+    weight = 6
+
+[markup]
+  [markup.highlight]
+    noClasses = false
+
+  [mark.goldmark.renderer]
+    unsafe = true
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[params]
+  title = "Michael Espeña - Psyche"
+  description = "Michael Espeña's blogs"
+
+  [params.search]
+    enable = true
+    type = "lunr"
+    contentLength = 4000
+    placeholder = ""
+    maxResultLength = 10
+    snippetLength = 30
+    highlightTag = "em"
+    absoluteURL = false
+    [params.search.algolia]
+      index = ""
+      appID = ""
+      searchKey = ""
+
+  [params.header]
+    desktopMode = "fixed"
+	mobileMode = "auto"
+	[params.header.title]
+	  logo = ""
+      name = "Michael Espeña"
+	  pre = "<i class='fas fa-terminal fa-fw' aria-hidden='true'></i>"
+      post = ""
+	  typeit = false
+
+  [params.home]
+    rss = 10
+
+    [params.home.profile]
+	  enable = true
+	  title = "Michael Espeña"
+	  subtitle = "Let's talk Linux, Books, Math and Other Interesting Stuff"
+	  typeit = true
+	  social = true
+
+  [params.social]
+    GitHub = "https://github.com/michesp42"
+    GitLab = "https://gitlab.com/michesp42"
+	Twitter = "https://twitter.com/michesp42"
+	
+  [params.math]
+    enable = true
+
+  [params.page.math]
+    enable = true
+
+  [params.page.comment]
+    enable = false  # disable comments at least for now
+
+  [params.analytics]
+    enable = false
