@@ -12,6 +12,10 @@ tags: ['linux']
 categories: ['notes', 'tutorial']
 ---
 
+{{< admonition warning >}}
+This is article is still mostly a draft.
+{{< admonition >}}
+
 {{< admonition info >}}
 This article is the first of my notes for [Shawn
 Powers'](https://www.youtube.com/c/shawnp0wers) work-in-progress [tutorial
