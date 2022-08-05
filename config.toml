@@ -63,9 +63,22 @@ enableEmoji = true
 [markup]
   [markup.highlight]
     noClasses = false
+    codeFences = true
+    guessSyntax = true
+    lineNos = true
+    LineNumbersInTable = true
 
-  [mark.goldmark.renderer]
-    unsafe = true
+  [markup.goldmark]
+    [markup.goldmark.extensions]
+      definitionList = true
+      footnote = true
+      linkify = true
+      strikethrough = true
+      table = true
+      taskList = true
+      typographer = true
+    [mark.goldmark.renderer]
+      unsafe = true
 
 [outputs]
   home = ["HTML", "RSS", "JSON"]
