@@ -1,0 +1,185 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="noodp"><title>The Linux File Hierarchy Structure - Michael Espeña</title><meta name=Description content="Michael Espeña's blogs"><meta property="og:title" content="The Linux File Hierarchy Structure"><meta property="og:description" content="Info This article is the first of my notes for Shawn Powers&rsquo; work-in-progress tutorial playlist on the CompTIA Linux+ Exam. I&rsquo;ve already seen his Linux Server Course which I think covers roughly the same topics as his Linux+ playlist will but I&rsquo;ve already lost all my hand-written notes for the Linux server course and admittedly I&rsquo;ve already forgotten the nitty-gritty of the topics he discussed so I&rsquo;ll be reviewing the topics gradually as he uploads the videos."><meta property="og:type" content="article"><meta property="og:url" content="http://michesp42.github.io/posts/the-linux-file-hierarchy-structure/"><meta property="og:image" content="http://michesp42.github.io/posts/the-linux-file-hierarchy-structure/featured-image.jpg"><meta property="article:section" content="posts"><meta property="article:published_time" content="2022-08-05T16:01:24+08:00"><meta property="article:modified_time" content="2022-08-05T16:01:24+08:00"><meta property="og:site_name" content="Michael Espeña - Psyche"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="http://michesp42.github.io/posts/the-linux-file-hierarchy-structure/featured-image.jpg"><meta name=twitter:title content="The Linux File Hierarchy Structure"><meta name=twitter:description content="Info This article is the first of my notes for Shawn Powers&rsquo; work-in-progress tutorial playlist on the CompTIA Linux+ Exam. I&rsquo;ve already seen his Linux Server Course which I think covers roughly the same topics as his Linux+ playlist will but I&rsquo;ve already lost all my hand-written notes for the Linux server course and admittedly I&rsquo;ve already forgotten the nitty-gritty of the topics he discussed so I&rsquo;ll be reviewing the topics gradually as he uploads the videos."><meta name=application-name content="My cool site"><meta name=apple-mobile-web-app-title content="My cool site"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel="shortcut icon" type=image/x-icon href=/favicon.ico><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=http://michesp42.github.io/posts/the-linux-file-hierarchy-structure/><link rel=stylesheet href=/css/style.min.css><link rel=preload href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css as=style onload='this.onload=null,this.rel="stylesheet"'><noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css></noscript><link rel=preload href=https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css as=style onload='this.onload=null,this.rel="stylesheet"'><noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css></noscript><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"The Linux File Hierarchy Structure","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http:\/\/michesp42.github.io\/posts\/the-linux-file-hierarchy-structure\/"},"image":[{"@type":"ImageObject","url":"http:\/\/michesp42.github.io\/posts\/the-linux-file-hierarchy-structure\/featured-image.jpg","width":6015,"height":3383}],"genre":"posts","keywords":"linux","wordcount":1315,"url":"http:\/\/michesp42.github.io\/posts\/the-linux-file-hierarchy-structure\/","datePublished":"2022-08-05T16:01:24+08:00","dateModified":"2022-08-05T16:01:24+08:00","publisher":{"@type":"Organization","name":""},"author":{"@type":"Person","name":"Michael"},"description":""}</script></head><body data-header-desktop=fixed data-header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem("theme")?localStorage.getItem("theme")==="dark":"auto"==="auto"?window.matchMedia("(prefers-color-scheme: dark)").matches:"auto"==="dark")&&document.body.setAttribute("theme","dark")</script><div id=mask></div><div class=wrapper><header class=desktop id=header-desktop><div class=header-wrapper><div class=header-title><a href=/ title="Michael Espeña"><span class=header-title-pre><i class='fas fa-terminal fa-fw' aria-hidden=true></i></span>Michael Espeña</a></div><div class=menu><div class=menu-inner><a class=menu-item href=/about/>About </a><a class=menu-item href=/posts/>Posts </a><a class=menu-item href=/tags/>Tags </a><a class=menu-item href=/categories/>Categories </a><a class=menu-item href=https://github.com/michesp42 title=Github rel="noopener noreffer" target=_blank><i class='fab fa-github fa-fw'></i> </a><a class=menu-item href=https://gitlab.com/michesp42 title=gitlab rel="noopener noreffer" target=_blank><i class='fab fa-gitlab fa-fw'></i> </a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop>
+<input type=text placeholder="Search titles or contents..." id=search-input-desktop>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=Search><i class="fas fa-search fa-fw" aria-hidden=true></i></a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=Clear><i class="fas fa-times-circle fa-fw" aria-hidden=true></i></a>
+<span class="search-button search-loading" id=search-loading-desktop><i class="fas fa-spinner fa-fw fa-spin" aria-hidden=true></i></span>
+</span><a href=javascript:void(0); class="menu-item theme-switch" title="Switch Theme"><i class="fas fa-adjust fa-fw" aria-hidden=true></i></a></div></div></div></header><header class=mobile id=header-mobile><div class=header-container><div class=header-wrapper><div class=header-title><a href=/ title="Michael Espeña"><span class=header-title-pre><i class='fas fa-terminal fa-fw' aria-hidden=true></i></span>Michael Espeña</a></div><div class=menu-toggle id=menu-toggle-mobile><span></span><span></span><span></span></div></div><div class=menu id=menu-mobile><div class=search-wrapper><div class="search mobile" id=search-mobile><input type=text placeholder="Search titles or contents..." id=search-input-mobile>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=Search><i class="fas fa-search fa-fw" aria-hidden=true></i></a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=Clear><i class="fas fa-times-circle fa-fw" aria-hidden=true></i></a>
+<span class="search-button search-loading" id=search-loading-mobile><i class="fas fa-spinner fa-fw fa-spin" aria-hidden=true></i></span></div><a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>Cancel</a></div><a class=menu-item href=/about/ title>About</a><a class=menu-item href=/posts/ title>Posts</a><a class=menu-item href=/tags/ title>Tags</a><a class=menu-item href=/categories/ title>Categories</a><a class=menu-item href=https://github.com/michesp42 title=Github rel="noopener noreffer" target=_blank><i class='fab fa-github fa-fw'></i></a><a class=menu-item href=https://gitlab.com/michesp42 title=gitlab rel="noopener noreffer" target=_blank><i class='fab fa-gitlab fa-fw'></i></a><a href=javascript:void(0); class="menu-item theme-switch" title="Switch Theme">
+<i class="fas fa-adjust fa-fw" aria-hidden=true></i></a></div></div></header><div class="search-dropdown desktop"><div id=search-dropdown-desktop></div></div><div class="search-dropdown mobile"><div id=search-dropdown-mobile></div></div><main class=main><div class=container><div class=toc id=toc-auto><h2 class=toc-title>Contents</h2><div class=toc-content id=toc-content-auto></div></div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">The Linux File Hierarchy Structure</h1><div class=post-meta><div class=post-meta-line><span class=post-author><a href=https://github.com/michesp42 title=Author target=_blank rel="noopener noreffer author" class=author><i class="fas fa-user-circle fa-fw" aria-hidden=true></i>Michael</a></span>&nbsp;<span class=post-category>included in <a href=/categories/notes/><i class="far fa-folder fa-fw" aria-hidden=true></i>notes</a>&nbsp;<a href=/categories/tutorial/><i class="far fa-folder fa-fw" aria-hidden=true></i>tutorial</a></span></div><div class=post-meta-line><i class="far fa-calendar-alt fa-fw" aria-hidden=true></i>&nbsp;<time datetime=2022-08-05>2022-08-05</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden=true></i>&nbsp;1315 words&nbsp;
+<i class="far fa-clock fa-fw" aria-hidden=true></i>&nbsp;7 minutes&nbsp;</div></div><div class=featured-image><img class=lazyload src=/svg/loading.min.svg data-src=/posts/the-linux-file-hierarchy-structure/featured-image.jpg data-srcset="/posts/the-linux-file-hierarchy-structure/featured-image.jpg, /posts/the-linux-file-hierarchy-structure/featured-image.jpg 1.5x, /posts/the-linux-file-hierarchy-structure/featured-image.jpg 2x" data-sizes=auto alt=/posts/the-linux-file-hierarchy-structure/featured-image.jpg title=/posts/the-linux-file-hierarchy-structure/featured-image.jpg></div><div class="details toc" id=toc-static data-kept><div class="details-summary toc-title"><span>Contents</span>
+<span><i class="details-icon fas fa-angle-right" aria-hidden=true></i></span></div><div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents><ul><li><a href=#the-linux-filesystem-standard>The Linux Filesystem Standard</a></li><li><a href=#home-and-root><code>/home</code> and <code>/root</code></a></li><li><a href=#boot><code>/boot</code></a></li><li><a href=#etc><code>/etc</code></a></li><li><a href=#opt><code>/opt</code></a></li><li><a href=#media-and-mnt><code>/media</code> and <code>/mnt</code></a></li><li><a href=#tmp><code>/tmp</code></a></li><li><a href=#bin-sbin-and-lib><code>/bin</code>, <code>/sbin</code>, and <code>/lib</code></a></li><li><a href=#dev-proc-and-sys><code>/dev</code>, <code>/proc</code>, and <code>/sys</code></a></li><li><a href=#var-and-vartmp><code>/var</code> and <code>/var/tmp</code></a></li><li><a href=#usr><code>/usr</code></a></li><li><a href=#further-reading>Further Reading</a></li></ul></nav></div></div><div class=content id=content><div class="details admonition info open"><div class="details-summary admonition-title"><i class="icon fas fa-info-circle fa-fw" aria-hidden=true></i>Info<i class="details-icon fas fa-angle-right fa-fw" aria-hidden=true></i></div><div class=details-content><div class=admonition-content>This article is the first of my notes for <a href=https://www.youtube.com/c/shawnp0wers target=_blank rel="noopener noreffer">Shawn
+Powers&rsquo;</a> work-in-progress <a href="https://www.youtube.com/playlist?list=PL78ppT-_wOmuwT9idLvuoKOn6UYurFKCp" target=_blank rel="noopener noreffer">tutorial
+playlist</a>
+on the <a href=https://partners.comptia.org/certifications/linux target=_blank rel="noopener noreffer">CompTIA Linux+
+Exam</a>. I&rsquo;ve already seen his
+<a href="https://www.youtube.com/watch?v=WMy3OzvBWc0" target=_blank rel="noopener noreffer">Linux Server Course</a> which I
+think covers roughly the same topics as his Linux+ playlist will but I&rsquo;ve
+already lost all my hand-written notes for the Linux server course and admittedly
+I&rsquo;ve already forgotten the nitty-gritty of the topics he discussed so I&rsquo;ll be
+reviewing the topics gradually as he uploads the videos.</div></div></div><h2 id=the-linux-filesystem-standard>The Linux Filesystem Standard</h2><p>The abstract of the <a href=https://refspecs.linuxfoundation.org/fhs.shtml target=_blank rel="noopener noreffer">official
+documentation</a> for the Linux
+Filesystem Standard (LFS) says:</p><div class="details admonition abstract open"><div class="details-summary admonition-title"><i class="icon fas fa-list-ul fa-fw" aria-hidden=true></i>Abstract<i class="details-icon fas fa-angle-right fa-fw" aria-hidden=true></i></div><div class=details-content><div class=admonition-content>This standard consists of a set of requirements and guidelines for file and
+directory placement under UNIX-like operating systems. The guidelines are
+intended to support interoperability of applications, system administration
+tools, development tools, and scripts as well as greater uniformity of
+documentation for these systems.</div></div></div><p>Simply said, the LFS specifies where certain files go in the file hierarchy of
+a <a href=https://en.wikipedia.org/wiki/Unix-like target=_blank rel="noopener noreffer">UNIX-like</a> operating system like
+Linux. Having a standard like this is important especially since, as the common
+phrase goes, everything in Linux is a file. (And this phrase is not an
+exaggeration, everything in Linux is indeed a file; a plain old normal file is
+a file, a directory/folder is a file, audio is a file, video is a file, even
+hard drives are represented as files and so on.) This standard makes
+filesystems across different Linux installation relatively uniform and so
+easier to manage for system administrators and even casual users like me who
+like to hack around the command line.</p><p>If I run the <code>tree</code> command at the root level <code>/</code> directory of my Linux machine it
+will show something like this:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>tree -d -L <span class=m>1</span> /
+</span></span><span class=line><span class=cl>/
+</span></span><span class=line><span class=cl>├── bin
+</span></span><span class=line><span class=cl>├── boot
+</span></span><span class=line><span class=cl>├── dev
+</span></span><span class=line><span class=cl>├── etc
+</span></span><span class=line><span class=cl>├── home
+</span></span><span class=line><span class=cl>├── lib
+</span></span><span class=line><span class=cl>├── mnt
+</span></span><span class=line><span class=cl>├── opt
+</span></span><span class=line><span class=cl>├── proc
+</span></span><span class=line><span class=cl>├── root
+</span></span><span class=line><span class=cl>├── sbin
+</span></span><span class=line><span class=cl>├── srv
+</span></span><span class=line><span class=cl>├── sys
+</span></span><span class=line><span class=cl>├── tmp
+</span></span><span class=line><span class=cl>├── usr
+</span></span><span class=line><span class=cl>└── var
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=m>16</span> directories
+</span></span></code></pre></td></tr></table></div></div><p>These are the directories under the root level <code>/</code> directory specified in the LFS.
+Now, let&rsquo;s go over the purpose of each of them.</p><h2 id=home-and-root><code>/home</code> and <code>/root</code></h2><p>The <code>/home</code> directory is the home directory of the users. For example, if a
+user is called <code>foo</code> then that user will have his dedicated <code>/home/foo</code>
+directory. In <code>/home/foo</code> will contain all the normal files the user <code>foo</code> has
+like documents, images, media files, etc.</p><p>Meanwhile, the root user has its own <code>/root</code> home directory which is separate
+from all the ordinary users of the system. The <code>/root</code> directory is separated
+so that in case you want to be in <a href=https://en.wikipedia.org/wiki/Single-user_mode target=_blank rel="noopener noreffer">single-user
+mode</a> the root user still has
+its configurations.</p><h2 id=boot><code>/boot</code></h2><p>In the <code>/boot</code> directory are static files that are need at sytem boot. The <code>/boot</code>
+directory of my machine has this files:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>$ ls -F /boot
+</span></span><span class=line><span class=cl>EFI/   initramfs-linux-fallback.img*  intel-ucode.img*
+</span></span><span class=line><span class=cl>grub/  initramfs-linux.img*           vmlinuz-linux*
+</span></span></code></pre></td></tr></table></div></div><div class="details admonition info open"><div class="details-summary admonition-title"><i class="icon fas fa-info-circle fa-fw" aria-hidden=true></i>Info<i class="details-icon fas fa-angle-right fa-fw" aria-hidden=true></i></div><div class=details-content><div class=admonition-content>The <code>-F</code> flag of <code>ls</code> classifies the files it lists using certain markers (one
+of <code>*/=>@|</code>). In the listing above, files appended with <code>/</code> are directories and
+those appended with <code>*</code> are executables.</div></div></div><p>The <code>/boot/EFI</code> directory contains files for
+<a href=https://en.wikipedia.org/wiki/UEFI target=_blank rel="noopener noreffer">UEFI</a>. The files for the
+<a href=https://en.wikipedia.org/wiki/GNU_GRUB target=_blank rel="noopener noreffer">GRUB</a> bootloader is obviously in
+<code>/boot/grub</code>. The <a href=https://en.wikipedia.org/wiki/Vmlinux target=_blank rel="noopener noreffer">vmlinuz-linux</a> is the
+statically linked executable file that contains the Linux kernel. The
+<code>initramfs</code> image (along with the kernel) is loaded by the bootloader at boot
+to start the kernel. Finally, since I have an Intel CPU, I installed the
+<code>intel-ucode</code> <a href=https://en.wikipedia.org/wiki/Microcode target=_blank rel="noopener noreffer">microcode</a> package.</p><h2 id=etc><code>/etc</code></h2><p>The <code>/etc</code> (sometimes called <em>et cetera</em> or read as <em>etsy</em>) directory houses
+configuration files. These files must be static and non-executable.</p><p>Listing out the content of my <code>/etc</code> directory, shows this (eliding other files):</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>$ ls -F /etc
+</span></span><span class=line><span class=cl>adjtime               gtk-2.0/          mkinitcpio.d/     rsyncd.conf
+</span></span><span class=line><span class=cl>alsa/                 gtk-3.0/          modprobe.d/       sasl2/
+</span></span><span class=line><span class=cl>anacrontab            healthd.conf      modules-load.d/   securetty
+</span></span><span class=line><span class=cl>arch-release          host.conf         monerod.conf      security/
+</span></span><span class=line><span class=cl>at.deny               hostname          mpd.conf          sensors3.conf
+</span></span><span class=line><span class=cl>audit/                hosts             mpv/              sensors.d/
+</span></span><span class=line><span class=cl>avahi/                i3/               mtab@             services
+</span></span><span class=line><span class=cl>avrdude.conf          i3status.conf     mtools.conf       shadow
+</span></span><span class=line><span class=cl>bash.bash_logout      ImageMagick-7/    multipath/        shadow-
+</span></span><span class=line><span class=cl>bash.bashrc           initcpio/         named.conf        shells
+</span></span><span class=line><span class=cl>bash_completion.d/    inputrc           nanorc.pacnew     skel/
+</span></span></code></pre></td></tr></table></div></div><p>Some of the configuration files that I recognize are</p><ul><li><code>i3/</code> contains configurations for the <a href=https//i3wm.org/ rel>i3</a> window manager</li><li><code>mpd.conf</code> configuration file for the music player daemon
+(<a href=https//www.musicpd.org/ rel>MPD</a>)</li><li><code>ssh/</code> secure shell (<a href=https//en.wikipedia.org/wiki/Secure_Shell rel>SSH</a>)
+configuration</li><li><code>skel</code> contains default bash configurations (in my system at least) that
+will be copied for every users created</li></ul><h2 id=opt><code>/opt</code></h2><p>The <code>/opt</code> directory is reserved for add-on packages. Listing out my <code>/opt</code>:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>$ ls -F /opt
+</span></span><span class=line><span class=cl>/opt
+</span></span><span class=line><span class=cl>├── appimages
+</span></span><span class=line><span class=cl>│   └── Sioyek.AppImage
+</span></span></code></pre></td></tr></table></div></div><p><a href=https://github.com/ahrm/sioyek target=_blank rel="noopener noreffer">Sioyek</a> PDF viewer is an
+<a href=https://docs.appimage.org/introduction/index.html target=_blank rel="noopener noreffer">appimage</a> package I
+installed from the <a href=https://aur.archlinux.org/ target=_blank rel="noopener noreffer">AUR</a>, i.e not from the official
+Arch repositories, hence it is installed in <code>/opt</code>.</p><h2 id=media-and-mnt><code>/media</code> and <code>/mnt</code></h2><p>The mount point for removable media devices such as floppy disks and cdrom is
+<code>/media</code>. While, temporarily mounted filesystems are mounted in <code>/mnt</code>. For
+example, if you have a USB hard drive you want to copy files from, you can make
+a directory say <code>mkdir /mnt/usbhdd</code> and mount the hard drive in this directory.
+Now you can access (temporarily or as long as the hard drive is mounted) the
+contents of you hard drive in <code>/mnt/usbhdd</code> as if it were a normal directory in
+your filesystem.</p><h2 id=tmp><code>/tmp</code></h2><p>Temporary files that are usually deleted on reboot are stored in <code>/tmp</code>. For
+example, the cached files (probably produced when I ran the command <code>hugo serve</code>) for <a href=https://gohugo.io target=_blank rel="noopener noreffer">Hugo</a> is stored in <code>/tmp/hugo_cache</code>.</p><h2 id=bin-sbin-and-lib><code>/bin</code>, <code>/sbin</code>, and <code>/lib</code></h2><p>Essential system binaries and other root-only commands are stored in <code>/sbin</code>
+(or <code>/usr/sbin</code> and <code>/usr/local/sbin</code>). For example, as specified in the
+official documentation, the <code>shutdown</code> command (or symbolic links to it) should
+be found in <code>/sbin</code>. Essential binaries that may be used by root and users are
+stored in <code>/bin</code>. For example, the binary for the shell should be found in
+<code>/bin/sh</code> ( which is probably symlinked to <code>/bin/bash</code> or <code>/bin/dash</code>) since
+both the root and users needs to run the shell.</p><p>The <code>/lib</code> directory contains shared library files needed at boot and required
+to run the commands stored in <code>/sbin</code> and <code>/bin</code>.</p><h2 id=dev-proc-and-sys><code>/dev</code>, <code>/proc</code>, and <code>/sys</code></h2><p>Hardware represented as files (such as hard drive and com ports) are stored in
+<code>/dev</code>. For example my primary SSD is located in <code>/dev/nvme0n1</code>. Process and kernel information generated on the fly are located in <code>/proc</code>. Listing out my <code>/proc</code> directory shows:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>$ ls -F /proc
+</span></span><span class=line><span class=cl>1/	     18/	  356744/  444/     60/      71/      89/	      kpagecount
+</span></span><span class=line><span class=cl>101/	 180/	  358644/  445/     614345/  710057/  9/	      kpageflags
+</span></span><span class=line><span class=cl>10130/	 181/	  358744/  446/     614359/  711096/  94/	      latency_stats
+</span></span><span class=line><span class=cl>102/	 182/	  358773/  447/     62/      711843/  95/	      loadavg
+</span></span><span class=line><span class=cl>102897/  183/	  358836/  448/     63/      713/     acpi/	      locks
+</span></span><span class=line><span class=cl>102900/  195/	  359154/  449/     64/      714102/  asound/	  meminfo
+</span></span><span class=line><span class=cl>102904/  196/	  36/	   45/	    647227/  715351/  bootconfig  misc
+</span></span></code></pre></td></tr></table></div></div><p>The numbers are process identifiers
+(<a href=https://en.wikipedia.org/wiki/Process_identifier target=_blank rel="noopener noreffer">PID</a>) generated on the fly
+by their respective processes. The command <code>acpi</code> shows battery and other ACPI
+information from the <code>/proc/acpi</code> (or <code>/sys</code> filesystem) that is again
+generated on the fly depending on the battery status.</p><p>The <code>/sys</code> directory contains information about devices, drivers, kernel and
+other system. It is like the <code>/proc</code> directory and was in fact created to move
+over some files from <code>/proc</code> to <code>/sys</code> since <code>/proc</code> was getting cluttered. For
+example, as with <code>/bin/acpi</code>, you can also show battery information from <code>cat /sys/class/power_supply/BAT0/</code></p><h2 id=var-and-vartmp><code>/var</code> and <code>/var/tmp</code></h2><p>File that change or read and write alot over time are stored in <code>/var</code>. For
+example, log files are stored in <code>/var/log</code>. A noteworthy subdirectory of
+<code>/var</code> is <code>/var/tmp</code> where you can store temporary files that are not deleted
+on reboot in contrast with <code>/tmp</code>.</p><h2 id=usr><code>/usr</code></h2><p>Files that are not necessary for single-user mode are stored in <code>/usr</code>. Most
+command binaries are stored in <code>/usr/bin</code>. Libraries for most command are
+stored in <code>/usr/lib</code>. Files and binaries specific to the local Linux system is
+located in <code>/usr/local</code> and <code>/usr/local/bin</code>, respectively.</p><h2 id=further-reading>Further Reading</h2><ul><li><a href=https://refspecs.linuxfoundation.org/fhs.shtml target=_blank rel="noopener noreffer">The Linux Filesystem Standard</a></li></ul></div><div class=post-footer id=post-footer><div class=post-info><div class=post-info-line><div class=post-info-mod><span>Updated on 2022-08-05</span></div></div><div class=post-info-line><div class=post-info-md></div><div class=post-info-share><span><a href=javascript:void(0); title="Share on Twitter" data-sharer=twitter data-url=http://michesp42.github.io/posts/the-linux-file-hierarchy-structure/ data-title="The Linux File Hierarchy Structure" data-via=michesp42 data-hashtags=linux><i class="fab fa-twitter fa-fw" aria-hidden=true></i></a><a href=javascript:void(0); title="Share on Facebook" data-sharer=facebook data-url=http://michesp42.github.io/posts/the-linux-file-hierarchy-structure/ data-hashtag=linux><i class="fab fa-facebook-square fa-fw" aria-hidden=true></i></a><a href=javascript:void(0); title="Share on Hacker News" data-sharer=hackernews data-url=http://michesp42.github.io/posts/the-linux-file-hierarchy-structure/ data-title="The Linux File Hierarchy Structure"><i class="fab fa-hacker-news fa-fw" aria-hidden=true></i></a><a href=javascript:void(0); title="Share on Line" data-sharer=line data-url=http://michesp42.github.io/posts/the-linux-file-hierarchy-structure/ data-title="The Linux File Hierarchy Structure"><i data-svg-src=https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg aria-hidden=true></i></a><a href=javascript:void(0); title="Share on 微博" data-sharer=weibo data-url=http://michesp42.github.io/posts/the-linux-file-hierarchy-structure/ data-title="The Linux File Hierarchy Structure"><i class="fab fa-weibo fa-fw" aria-hidden=true></i></a></span></div></div></div><div class=post-info-more><section class=post-tags><i class="fas fa-tags fa-fw" aria-hidden=true></i>&nbsp;<a href=/tags/linux/>linux</a></section><section><span><a href=javascript:void(0); onclick=window.history.back()>Back</a></span>&nbsp;|&nbsp;<span><a href=/>Home</a></span></section></div><div class=post-nav></div></div></article></div></main><footer class=footer><div class=footer-container><div class=footer-line>Powered by <a href=https://gohugo.io/ target=_blank rel="noopener noreffer" title="Hugo 0.101.0">Hugo</a> | Theme - <a href=https://github.com/dillonzq/LoveIt target=_blank rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden=true></i> LoveIt</a></div><div class=footer-line itemscope itemtype=http://schema.org/CreativeWork><i class="far fa-copyright fa-fw" aria-hidden=true></i><span itemprop=copyrightYear>2022</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=https://github.com/michesp42 target=_blank>Michael</a></span></div></div></footer></div><div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title="Back to Top"><i class="fas fa-arrow-up fa-fw" aria-hidden=true></i>
+</a><a href=# id=view-comments class=fixed-button title="View Comments"><i class="fas fa-comment fa-fw" aria-hidden=true></i></a></div><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css><script type=text/javascript src=https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js></script><script type=text/javascript>window.config={code:{copyTitle:"Copy to clipboard",maxShownLines:50},comment:{},math:{delimiters:[{display:!0,left:"$$",right:"$$"},{display:!0,left:"\\[",right:"\\]"},{display:!0,left:"\\begin{equation}",right:"\\end{equation}"},{display:!0,left:"\\begin{equation*}",right:"\\end{equation*}"},{display:!0,left:"\\begin{align}",right:"\\end{align}"},{display:!0,left:"\\begin{align*}",right:"\\end{align*}"},{display:!0,left:"\\begin{alignat}",right:"\\end{alignat}"},{display:!0,left:"\\begin{alignat*}",right:"\\end{alignat*}"},{display:!0,left:"\\begin{gather}",right:"\\end{gather}"},{display:!0,left:"\\begin{CD}",right:"\\end{CD}"},{display:!1,left:"$",right:"$"},{display:!1,left:"\\(",right:"\\)"}],strict:!1},search:{highlightTag:"em",lunrIndexURL:"/index.json",maxResultLength:10,noResultsFound:"No results found",snippetLength:30,type:"lunr"}}</script><script type=text/javascript src=/js/theme.min.js></script></body></html>
