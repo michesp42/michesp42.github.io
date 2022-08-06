@@ -12,21 +12,18 @@ tags: ['linux']
 categories: ['notes', 'tutorial']
 ---
 
-{{< admonition warning >}}
-This is article is still mostly a draft.
-{{< /admonition >}}
-
 {{< admonition info >}}
 This article is the first of my notes for [Shawn
 Powers'](https://www.youtube.com/c/shawnp0wers) work-in-progress [tutorial
 playlist](https://www.youtube.com/playlist?list=PL78ppT-_wOmuwT9idLvuoKOn6UYurFKCp)
-on the [CompTIA Linux+
-Exam](https://partners.comptia.org/certifications/linux). I've already seen his
-[Linux Server Course](https://www.youtube.com/watch?v=WMy3OzvBWc0) which I
-think covers roughly the same topics as his Linux+ playlist will but I've
-already lost all my hand-written notes for the Linux server course and admittedly
-I've already forgotten the nitty-gritty of the topics he discussed so I'll be
-reviewing the topics gradually as he uploads the videos.
+on the [CompTIA Linux+ Exam](https://partners.comptia.org/certifications/linux).
+I have already seen his [Linux Server
+Course](https://www.youtube.com/watch?v=WMy3OzvBWc0) which I think covers
+roughly the same topics as his Linux+ playlist will but unfortunately I lost all
+my hand-written notes for the Linux server course and admittedly I have already
+forgotten the nitty-gritty of the topics he discussed in the course. And so I'll
+be reviewing the topics gradually and take notes as he uploads the videos for
+the Linux+ series.
 {{< /admonition >}}
 
 ## The Linux Filesystem Standard
@@ -43,16 +40,17 @@ tools, development tools, and scripts as well as greater uniformity of
 documentation for these systems.
 {{< /admonition >}}
 
-Simply said, the LFS specifies where certain files go in the file hierarchy of
-a [UNIX-like](https://en.wikipedia.org/wiki/Unix-like) operating system like
+Simply said, the LFS specifies where certain files go in the file hierarchy of a
+[UNIX-like](https://en.wikipedia.org/wiki/Unix-like) operating system like
 Linux. Having a standard like this is important especially since, as the common
-phrase goes, everything in Linux is a file. (And this phrase is not an
-exaggeration, everything in Linux is indeed a file; a plain old normal file is
+saying goes, [everything in Linux is a
+file](https://en.wikipedia.org/wiki/Everything_is_a_file). This is not an
+exaggeration -- everything in Linux is indeed a file; a plain old normal file is
 a file, a directory/folder is a file, audio is a file, video is a file, even
-hard drives are represented as files and so on.) This standard makes
-filesystems across different Linux installation relatively uniform and so
-easier to manage for system administrators and even casual users like me who
-like to hack around the command line.
+network communication is a file, even hard drives are represented as files and
+so on. This standard makes filesystems across different Linux installation
+relatively uniform and so easier to manage for system administrators and even
+casual users like me who like to hack around the command line.
 
 If I run the `tree` command at the root level `/` directory of my Linux machine it
 will show something like this:
@@ -85,16 +83,16 @@ Now, let's go over the purpose of each of them.
 
 ## `/home` and `/root`
 
-The `/home` directory is the home directory of the users. For example, if a
-user is called `foo` then that user will have his dedicated `/home/foo`
-directory. In `/home/foo` will contain all the normal files the user `foo` has
-like documents, images, media files, etc.
+The `/home` directory contains the home directories of the users. For example, a
+user called `foo` will have its dedicated `/home/foo` directory. Found in
+`/home/foo` are all the files user `foo` has like documents, images, media
+files, etc.
 
 Meanwhile, the root user has its own `/root` home directory which is separate
-from all the ordinary users of the system. The `/root` directory is separated
-so that in case you want to be in [single-user
-mode](https://en.wikipedia.org/wiki/Single-user_mode) the root user still has
-its configurations.
+from all the ordinary users of the system. Having `/root` separate from `/home`
+is quite handy especially in case you want to be in [single-user
+mode](https://en.wikipedia.org/wiki/Single-user_mode) the root user will still
+have its configurations.
 
 ## `/boot`
 
@@ -113,21 +111,24 @@ of `*/=>@|`). In the listing above, files appended with `/` are directories and
 those appended with `*` are executables.
 {{< /admonition >}}
 
-The `/boot/EFI` directory contains files for
-[UEFI](https://en.wikipedia.org/wiki/UEFI). The files for the
-[GRUB](https://en.wikipedia.org/wiki/GNU_GRUB) bootloader is obviously in
-`/boot/grub`. The [vmlinuz-linux](https://en.wikipedia.org/wiki/Vmlinux) is the
-statically linked executable file that contains the Linux kernel. The
-`initramfs` image (along with the kernel) is loaded by the bootloader at boot
-to start the kernel. Finally, since I have an Intel CPU, I installed the
-`intel-ucode` [microcode](https://en.wikipedia.org/wiki/Microcode) package.
+Here is a brief rundown of the files under my `/boot` directory:
+- `/boot/EFI` contains files for [UEFI](https://en.wikipedia.org/wiki/UEFI)
+- inside `/boot/grub` are files for the
+[GRUB](https://en.wikipedia.org/wiki/GNU_GRUB) bootloader
+- the [vmlinuz-linux](https://en.wikipedia.org/wiki/Vmlinux) is a (compressed?)
+statically linked executable file that contains the Linux kernel
+- the `initramfs` image (along with the kernel) is loaded by the bootloader at
+  boot to start the kernel.
+- `intel-ucode.img` is the [microcode](https://en.wikipedia.org/wiki/Microcode)
+image provided for Intel CPus.
 
 ## `/etc`
 
 The `/etc` (sometimes called _et cetera_ or read as _etsy_) directory houses
-configuration files. These files must be static and non-executable.
+(text) configuration files. These files must be static and non-executable.
 
-Listing out the content of my `/etc` directory, shows this (eliding other files):
+These are the content of my `/etc` directory (eliding other files to save
+space):
 
 ```bash
 $ ls -F /etc
@@ -156,7 +157,7 @@ Some of the configuration files that I recognize are
 
 ## `/opt`
 
-The `/opt` directory is reserved for add-on packages. Listing out my `/opt`:
+The `/opt` directory is reserved for add-on packages. Listing out my `/opt` directory shows
 
 ```bash
 $ ls -F /opt
@@ -173,12 +174,12 @@ Arch repositories, hence it is installed in `/opt`.
 ## `/media` and `/mnt`
 
 The mount point for removable media devices such as floppy disks and cdrom is
-`/media`. While, temporarily mounted filesystems are mounted in `/mnt`. For
-example, if you have a USB hard drive you want to copy files from, you can make
-a directory say `mkdir /mnt/usbhdd` and mount the hard drive in this directory.
-Now you can access (temporarily or as long as the hard drive is mounted) the
-contents of you hard drive in `/mnt/usbhdd` as if it were a normal directory in
-your filesystem.
+`/media`. While temporarily mounted filesystems are mounted in `/mnt`. For
+example, if you have a hard drive attached as `/dev/sda` you want to copy files
+from. You can make a directory say `/mnt/hddmnt ` and mount the hard drive in
+that directory like so `mnt /dev/sda1 /mnt/hddmnt`. Now you can access
+(temporarily or as long as the hard drive is mounted) the contents of your hard
+drive in `/mnt/hddmnt` as if it were a normal directory in your filesystem.
 
 ## `/tmp`
 
@@ -187,13 +188,13 @@ example, the cached files (probably produced when I ran the command `hugo serve`
 
 ## `/bin`, `/sbin`, and `/lib`
 
-Essential system binaries and other root-only commands are stored in `/sbin`
-(or `/usr/sbin` and `/usr/local/sbin`). For example, as specified in the
-official documentation, the `shutdown` command (or symbolic links to it) should
-be found in `/sbin`. Essential binaries that may be used by root and users are
-stored in `/bin`. For example, the binary for the shell should be found in
-`/bin/sh` ( which is probably symlinked to `/bin/bash` or `/bin/dash`) since
-both the root and users needs to run the shell.
+Essential system binaries and other root-only commands are stored in `/sbin` (or
+`/usr/sbin` and `/usr/local/sbin`). For example, as specified in the official
+documentation, the `shutdown` command (or a symbolic link to it) should be found
+in `/sbin`. Essential binaries that may be used by root and users are stored in
+`/bin`. For example, the binary for the shell should be found in `/bin/sh` (
+which I symlinked in my computer to `/bin/dash`) since both the root and users
+needs to run the shell.
 
 The `/lib` directory contains shared library files needed at boot and required
 to run the commands stored in `/sbin` and `/bin`.
@@ -201,7 +202,9 @@ to run the commands stored in `/sbin` and `/bin`.
 ## `/dev`, `/proc`, and `/sys`
 
 Hardware represented as files (such as hard drive and com ports) are stored in
-`/dev`. For example my primary SSD is located in `/dev/nvme0n1`. Process and kernel information generated on the fly are located in `/proc`. Listing out my `/proc` directory shows:
+`/dev`. For example my primary SSD is represented as `/dev/nvme0n1`. Process and
+kernel information generated on the fly are located in `/proc`. Listing out my
+`/proc` directory shows:
 
 ```bash
 $ ls -F /proc
@@ -221,13 +224,14 @@ information from the `/proc/acpi` (or `/sys` filesystem) that is again
 generated on the fly depending on the battery status.
 
 The `/sys` directory contains information about devices, drivers, kernel and
-other system. It is like the `/proc` directory and was in fact created to move
-over some files from `/proc` to `/sys` since `/proc` was getting cluttered. For
-example, as with `/bin/acpi`, you can also show battery information from `cat /sys/class/power_supply/BAT0/`
+other system devices. It overlaps with respect to functionality with the `/proc`
+directory and was in fact created to declutter and move over some files from
+`/proc`. For example, you may also get battery information from
+`/sys/class/power_supply/BAT0/`.
 
 ## `/var` and `/var/tmp`
 
-File that change or read and write alot over time are stored in `/var`. For
+Files that change or read and write a lot over time are stored in `/var`. For
 example, log files are stored in `/var/log`. A noteworthy subdirectory of
 `/var` is `/var/tmp` where you can store temporary files that are not deleted
 on reboot in contrast with `/tmp`.
@@ -239,6 +243,8 @@ command binaries are stored in `/usr/bin`. Libraries for most command are
 stored in `/usr/lib`. Files and binaries specific to the local Linux system is
 located in `/usr/local` and `/usr/local/bin`, respectively.
 
-## Further Reading
+## References and Further Reading
 
+- [Why Linux Puts File ALL OVER?!?(Linux+ Objective
+  1.1.1)](https://www.youtube.com/watch?v=tZZinDVu0J8)
 - [The Linux Filesystem Standard](https://refspecs.linuxfoundation.org/fhs.shtml)
