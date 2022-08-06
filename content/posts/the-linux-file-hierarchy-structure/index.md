@@ -96,7 +96,7 @@ have its configurations.
 
 ## `/boot`
 
-In the `/boot` directory are static files that are need at sytem boot. The `/boot`
+In the `/boot` directory are static files that are needed at sytem boot. The `/boot`
 directory of my machine has this files:
 
 ```bash
@@ -148,11 +148,11 @@ bash_completion.d/    inputrc           nanorc.pacnew     skel/
 Some of the configuration files that I recognize are
 
 - `i3/` contains configurations for the [i3](https//i3wm.org/) window manager
-- `mpd.conf` configuration file for the music player daemon
+- `mpd.conf` is the configuration file for the music player daemon
   ([MPD](https//www.musicpd.org/))
-- `ssh/` secure shell ([SSH](https//en.wikipedia.org/wiki/Secure_Shell))
+- `ssh/` contains secure shell ([SSH](https//en.wikipedia.org/wiki/Secure_Shell))
   configuration
-- `skel` contains default bash configurations (in my system at least) that
+- `skel/` contains default bash configurations (in my system at least) that
   will be copied for every users created
 
 ## `/opt`
@@ -168,7 +168,7 @@ $ ls -F /opt
 
 [Sioyek](https://github.com/ahrm/sioyek) PDF viewer is an
 [appimage](https://docs.appimage.org/introduction/index.html) package I
-installed from the [AUR](https://aur.archlinux.org/), i.e not from the official
+installed from the [AUR](https://aur.archlinux.org/), i.e. not from the official
 Arch repositories, hence it is installed in `/opt`.
 
 ## `/media` and `/mnt`
@@ -245,6 +245,6 @@ located in `/usr/local` and `/usr/local/bin`, respectively.
 
 ## References and Further Reading
 
-- [Why Linux Puts File ALL OVER?!?(Linux+ Objective
+- [Why Linux Puts Files ALL OVER?!?(Linux+ Objective
   1.1.1)](https://www.youtube.com/watch?v=tZZinDVu0J8)
 - [The Linux Filesystem Standard](https://refspecs.linuxfoundation.org/fhs.shtml)
