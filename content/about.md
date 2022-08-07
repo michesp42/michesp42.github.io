@@ -1,6 +1,7 @@
 ---
 title: 'About'
 date: 2022-08-03T21:04:06+08:00
+hiddenFromSearch: true
 ---
 
 Hi I'm Michael, thank you for stopping by. This website is still a
