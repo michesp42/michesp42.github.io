@@ -6,7 +6,7 @@ languageName = "English"
 enableEmoji = true
 
 [author]
-  name = "Michael"
+  name = "Michael Espeña"
   email = "michael.esp42@pm.me"
   link = "https://github.com/michesp42"
 
@@ -129,11 +129,21 @@ enableEmoji = true
   [params.math]
     enable = true
 
-  [params.page.math]
-    enable = true
+  [params.page]
+    [params.page.math]
+      enable = true
 
-  [params.page.comment]
-    enable = false  # disable comments at least for now
+    [params.page.comment]
+      enable = false # disable comments for now
+
+    [params.page.share]
+	  enable = true
+	  Twitter = true
+	  Facebook = true
+	  Linkedin = true
+      Hackernews = true
+      Line = false
+	  Weibo = false
 
   [params.analytics]
     enable = false
