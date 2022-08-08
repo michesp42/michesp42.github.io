@@ -68,23 +68,18 @@ used.
 
 The following diagram illustrates a normal Linux boot process:
 
-{{< mermaid >}}
-    flowchart LR
-	  subgraph VMLINUX
-	    direction TB
-        initrd[init ram disk] --> vmlin[vmlinux or vmlinuz]
-        initramfs[initramfs] --> vmlin
-        style initrd stroke-width:2px,stroke-dasharray: 5 5
-        style initramfs stroke-width:2px,stroke-dasharray: 5 5
-      end
-      subgraph KERNEL
-        direction TB
-	    modules[modules] --> fullkernel[full kernel]
-        style modules stroke-width:2px,stroke-dasharray: 5 5
-      end
-      bios[BIOS or UEFI] --> VMLINUX
-      VMLINUX --> KERNEL
-{{< /mermaid >}}
+```goat
+              .------.   .---------.    .-------.
+             | initrd | | initramfs |  | modules |
+              '----+-'   '-+-------'    '---+---'
+                   |       |                |
+                   v       v                v
+ .------.         .---------.          .--------.
+ | UEFI |         | vmlinux |          |  full  |
+ |  or  +-------->|   or    +--------->| kernel |
+ | BIOS |         | vmlinuz |          '--------'
+ '------'         '---------'
+```
 
 Starting with UEFI or BIOS, we go to the GRUB bootloader (assuming we boot off
 the hard drive normally). GRUB then loads `vmlinux`. The
