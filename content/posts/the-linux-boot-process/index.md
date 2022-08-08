@@ -29,7 +29,7 @@ between UEFI and BIOS:
 | uses hard drive partition to store configuration | configured and stored in mother board |
 | supports drive sizes up to 9 zettabytes          | supports only up to 2.2 TB drives     |
 | provides faster boot time than BIOS              | slower boot time than UEFI            |
-| offers secure boot                               | less secure that UEFI                 |
+| offers secure boot                               | less secure than UEFI                 |
 | runs on 32- or 64-bit mode                       | runs on 16-bit mode                   |
 | offers GUI (with mouse navigation) interface     | keyboard only interface               |
 
@@ -98,15 +98,14 @@ EFI/   initramfs-linux-fallback.img*  intel-ucode.img*
 grub/  initramfs-linux.img*	      vmlinuz-linux*
 ```
 
-The kernel `vmlinux` is a generic kernel compiled for a multitude of hardware.
-Because the kernel modules needed for a system is dependent on the specific
-hardware it has, we need a way to load the kernel modules that a system's
-hardware needs. That is where
-[initrd](https://en.wikipedia.org/wiki/Initial_ramdisk) comes in. `Initrd` is a
-scheme to load just enough software like kernel modules to recognize the system
-hardware.`Initramfs`, an alternative scheme to `initrd` is a filesystem takes
-care of mounting important file systems by also loading the proper kernel
-modules and drivers for the system hardware.
+`Vmlinux` is a generic kernel compiled for a multitude of hardware. Because the
+kernel modules needed for a system is dependent on the specific hardware it has,
+we need a way to load the kernel modules that a particular system hardware
+needs. That is where [initrd](https://en.wikipedia.org/wiki/Initial_ramdisk)
+comes in. `Initrd` is a scheme to load just enough software like kernel modules
+to recognize the system hardware.`Initramfs`, an alternative scheme to `initrd`
+is a filesystem takes care of mounting important file systems by also loading
+the proper kernel modules and drivers for the system hardware.
 
 ## Configuring GRUB
 
