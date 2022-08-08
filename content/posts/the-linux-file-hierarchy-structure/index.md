@@ -12,6 +12,8 @@ tags: ['linux']
 categories: ['notes', 'tutorial']
 ---
 
+# CompTIA Linux+ Exam Objective 1.1.1
+
 {{< admonition info >}}
 This article is the first of my notes for [Shawn
 Powers'](https://www.youtube.com/c/shawnp0wers) work-in-progress [tutorial

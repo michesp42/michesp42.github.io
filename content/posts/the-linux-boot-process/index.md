@@ -12,6 +12,17 @@ tags: ['linux']
 categories: ['notes', 'tutorial']
 ---
 
+# CompTIA Linux+ Exam Objective 1.1.2
+
+{{< admonition info >}}
+This article is my second note for [Shawn
+Powers'](https://www.youtube.com/c/shawnp0wers) [tutorial
+playlist](https://www.youtube.com/playlist?list=PL78ppT-_wOmuwT9idLvuoKOn6UYurFKCp)
+on the [CompTIA Linux+ Exam](https://partners.comptia.org/certifications/linux).
+The notes starts [here]({{< ref
+"posts/the-linux-file-hierarchy-structure/index.md" >}}).
+{{< /admonition >}}
+
 ## UEFI and BIOS
 
 [UEFI](https://en.wikipedia.org/wiki/UEFI) and
