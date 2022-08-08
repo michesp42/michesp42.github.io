@@ -103,23 +103,24 @@ enableEmoji = true
 
   [params.header]
     desktopMode = "fixed"
-	mobileMode = "auto"
-	[params.header.title]
-	  logo = ""
+    mobileMode = "auto"
+
+    [params.header.title]
+      logo = ""
       name = "Michael Espeña"
-	  pre = "<i class='fas fa-terminal fa-fw' aria-hidden='true'></i>"
+      pre = "<i class='fas fa-terminal fa-fw' aria-hidden='true'></i>"
       post = ""
-	  typeit = false
+      typeit = false
 
   [params.home]
     rss = 10
 
     [params.home.profile]
-	  enable = true
-	  title = "Michael Espeña"
-	  subtitle = "Welcome to my site!"
-	  typeit = true
-	  social = true
+      enable = true
+      title = "Michael Espeña"
+      subtitle = "Welcome to my site!"
+      typeit = true
+      social = true
 
   [params.social]
     GitHub = "michesp42"
@@ -138,13 +139,13 @@ enableEmoji = true
       enable = false # disable comments for now
 
     [params.page.share]
-	  enable = true
-	  Twitter = true
-	  Facebook = true
-	  Linkedin = true
+      enable = true
+      Twitter = true
+      Facebook = true
+      Linkedin = true
       Hackernews = true
       Line = false
-	  Weibo = false
+      Weibo = false
 
   [params.analytics]
     enable = false
