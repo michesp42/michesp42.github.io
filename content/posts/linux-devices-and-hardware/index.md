@@ -8,7 +8,7 @@ resources: # https://www.pexels.com/photo/close-up-of-working-257886/
   - name: 'featured-image'
     src: 'featured-image.jpg'
 
-tags: ['linux']
+tags: ['linux', 'certification', 'comptia linux+']
 categories: ['notes', 'tutorial']
 ---
 
@@ -38,7 +38,7 @@ transfers water in a gushing, continuous stream.
 
 ## Where devices live in Linux
 
-As spefied in the [Linux filesystem
+As specified in the [Linux filesystem
 standard](https://refspecs.linuxfoundation.org/fhs.shtml) devices are located in
 `/dev`. Listing out the files under my `/dev` folder shows something like this
 
@@ -74,8 +74,8 @@ brw-rw----   1 root disk   259,     0 Aug  8 16:25 nvme0n1
 ...
 ```
 
-The first character of the list is the indicator -- `c` are for character devices
-and `b` are for block devices.
+The first character of the list is the indicator -- `c` is for character devices
+and `b` is for block devices.
 {{< /admonition >}}
 
 # Some important character devices
