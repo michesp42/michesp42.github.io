@@ -8,7 +8,7 @@ resources: # https://unsplash.com/photos/8eoRM2zHkHc
   - name: 'featured-image'
     src: 'featured-image.jpg'
 
-tags: ['linux']
+tags: ['linux', 'certification', 'comptia linux+']
 categories: ['notes', 'tutorial']
 ---
 
