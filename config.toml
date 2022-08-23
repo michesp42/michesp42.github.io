@@ -126,8 +126,7 @@ enableEmoji = true
     GitHub = "michesp42"
     GitLab = "michesp42"
     Twitter = "michesp42"
-    Linkedin = "michesp42"
-
+    
   [params.math]
     enable = true
 
