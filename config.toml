@@ -65,7 +65,7 @@ enableEmoji = true
     noClasses = false
     codeFences = true
     guessSyntax = true
-    lineNos = true
+    lineNos = false
     LineNumbersInTable = true
 
   [markup.goldmark]
