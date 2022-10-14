@@ -1,5 +1,5 @@
 ---
-title: "How I Setup My Dotfiles"
+title: "How I Track My Dotfiles"
 date: 2022-10-14T12:28:49+08:00
 draft: false
 ---
