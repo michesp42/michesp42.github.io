@@ -4,10 +4,6 @@ date: 2022-10-14T12:28:49+08:00
 draft: false
 categories: ['tutorials']
 tags: ['linux', 'dotfiles', 'git']
-images: []
-resources:
-  - name: 'featured-image'
-    src: 'featured-image.jpg' # https://unsplash.com/photos/KgRKlQXmHR0
 ---
 
 There are many ways to manage
