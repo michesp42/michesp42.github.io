@@ -7,7 +7,7 @@ tags: ['linux', 'dotfiles', 'git']
 images: []
 resources:
   - name: 'featured-image'
-    src: 'featured-image.png'
+    src: 'featured-image.jpg' # https://unsplash.com/photos/KgRKlQXmHR0
 ---
 
 There are many ways to manage
