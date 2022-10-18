@@ -4,6 +4,10 @@ date: 2022-10-14T12:28:49+08:00
 draft: false
 categories: ['tutorials']
 tags: ['linux', 'dotfiles', 'git']
+images: []
+resources:
+  - name: 'featured-image'
+    src: 'featured-image.png'
 ---
 
 There are many ways to manage
@@ -22,7 +26,7 @@ the `.git` folder itself and you will have to track files that are outside of
 it, which is perfect for tracking dotfiles that are all scattered all around in
 your home directory.
 
-In the following sections I will show how to set up a bare repository and some
+In the following sections I will show how to set up a bare repository with some
 additional git configurations especially if you wanna add a `README` and
 `LICENSE` for your repository but don't want them to cluttering up your home
 directory.
